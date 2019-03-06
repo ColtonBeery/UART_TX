@@ -85,10 +85,14 @@
 !*.bmm
 !*.xmp
 #########
-#Bitstream-files
+#Programming Bitstream-file
 #########
 !*.bit
 #########
 #Project Archives
 #########
 !*.zip
+#########
+#Project Reports
+#########
+!*.pdf
