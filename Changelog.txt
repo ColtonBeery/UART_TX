@@ -1,3 +1,5 @@
+Revision 0.17
+	- Tried changing all the blocking = signs inside the always block to nonblocking <= signs
 Revision 0.16
 	- replaced 	current_state	 and 	next_state	 with a single state variable 	state	because Vivado says it merges the two anyways. 
 	- removed default state from case statement because Vivado says default case is never used

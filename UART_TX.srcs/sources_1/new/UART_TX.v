@@ -4,7 +4,7 @@
 // Engineer: Colton Beery
 // 
 // Create Date: 02/20/2019 08:59:18 AM
-// Revision Date: 3/6/2019 10:41 AM
+// Revision Date: 3/6/2019 11:03 AM
 // Module Name: UART_TX
 // Project Name: UART
 // Target Devices: Basys3
@@ -19,7 +19,7 @@
 // Dependencies: Basys3_Master_Customized.xdc
 // 
 // Revision History 
-// Current Revision: 0.16
+// Current Revision: 0.17
 // Changelog in Changelog.txt
 //
 // Additional Comments:  
@@ -70,10 +70,10 @@ module UART_TX(
                 JA[0] <= idle_bit; //When idle, assert idle bit
                 /* Read Logic */
                 if (IO_BTN_C) begin
-                    data = IO_SWITCH[7:0];     //read switches 1-8, where 0 is LSB
+                    data <= IO_SWITCH[7:0];     //read switches 1-8, where 0 is LSB
 //                    transmission = {stop_bit, data, start_bit}; //transmission is Start->data (lsb first)->Stop
                     //IO_LED = transmission;
-                    state = start;
+                    state <= start;
 //                    bit = 0;
                 end                 
             end
@@ -81,28 +81,27 @@ module UART_TX(
             /* start bit */
             start: begin
                 for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
-                    JA[0] = start_bit;                        
+                    JA[0] <= start_bit;                        
                 end
-                state = out;
+                state <= out;
             end
             
             /* Data transmission */
             out: begin
-                    for (bit = 0; bit < 7; bit = bit + 1) begin // If there's still more bits to transmit
+                    for (bit = 0; bit <= 7; bit = bit + 1) begin // If there's still more bits to transmit
                       for (counter = 0; counter < max_counter; counter = counter + 1) //if counter hasn't overflowed yet, transmit
-                            JA[0] = data[bit]; 
+                            JA[0] <= data[bit]; 
                     end
 //                    bit = 0;  
-                    state = stop;                   
+                    state <= stop;                   
                 end
             
             /* stop bit */
             stop: begin
-                for (counter = 0; counter < max_counter; counter = counter + 1) //if counter hasn't overflowed yet, transmit
-                              JA[0] = stop_bit;                            
-                state = idle;
-            end
-                                
+                for (counter = 0; counter <= max_counter; counter = counter + 1) //if counter hasn't overflowed yet, transmit
+                    JA[0] <= stop_bit;                            
+                state <= idle;
+            end                                
         endcase    
     end
 endmodule
