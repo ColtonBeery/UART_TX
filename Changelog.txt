@@ -1,3 +1,7 @@
+Revision 0.16
+	- replaced 	current_state	 and 	next_state	 with a single state variable 	state	because Vivado says it merges the two anyways. 
+	- removed default state from case statement because Vivado says default case is never used
+	- removed unneccesary inputs IO_SWITCH 8 to 15 that were never used. 
 Revision 0.15
 	- Found an error where I typed	 for (bit = 0; counter < 7; bit = bit + 1)	when it should have been	for (bit = 0; bit < 7; bit = bit + 1)
 Revision 0.14 

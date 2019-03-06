@@ -4,7 +4,7 @@
 // Engineer: Colton Beery
 // 
 // Create Date: 02/20/2019 08:59:18 AM
-// Revision Date: 3/6/2019 10:21 AM
+// Revision Date: 3/6/2019 10:41 AM
 // Module Name: UART_TX
 // Project Name: UART
 // Target Devices: Basys3
@@ -19,7 +19,7 @@
 // Dependencies: Basys3_Master_Customized.xdc
 // 
 // Revision History 
-// Current Revision: 0.15
+// Current Revision: 0.16
 // Changelog in Changelog.txt
 //
 // Additional Comments:  
@@ -28,7 +28,7 @@
 
 
 module UART_TX(
-    input [15:0] IO_SWITCH, //IO Dipswitches; up = 1
+    input [7:0] IO_SWITCH, //IO Dipswitches; up = 1
     input IO_BTN_C,         //IO Pushbutton (Center); pushed = 1
     input clk,              //Master clock signal
     output reg [7:0] JA,     //PMOD JA; port JA1 used as TX pin
@@ -37,7 +37,7 @@ module UART_TX(
     );
     
     /* State Machine Parameters */
-    reg [1:0] current_state, next_state;
+    reg [1:0] state; 
     parameter idle = 2'b00; //State 0 = idle
     parameter start = 2'b01; //State 1 = start bit
     parameter out = 2'b10;  //State 2 = output
@@ -65,47 +65,44 @@ module UART_TX(
     always @(posedge clk) begin
         
         /* Current State Logic */    
-        case (current_state)
+          case(state)
             idle: begin              
-                JA[0] = idle_bit; //When idle, assert idle bit
+                JA[0] <= idle_bit; //When idle, assert idle bit
                 /* Read Logic */
                 if (IO_BTN_C) begin
                     data = IO_SWITCH[7:0];     //read switches 1-8, where 0 is LSB
 //                    transmission = {stop_bit, data, start_bit}; //transmission is Start->data (lsb first)->Stop
                     //IO_LED = transmission;
-                    next_state = start;
-                    bit = 0;
+                    state = start;
+//                    bit = 0;
                 end                 
             end
             
+            /* start bit */
             start: begin
                 for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
                     JA[0] = start_bit;                        
                 end
-                next_state = out;
+                state = out;
             end
             
+            /* Data transmission */
             out: begin
                     for (bit = 0; bit < 7; bit = bit + 1) begin // If there's still more bits to transmit
                       for (counter = 0; counter < max_counter; counter = counter + 1) //if counter hasn't overflowed yet, transmit
                             JA[0] = data[bit]; 
                     end
-                    bit = 0;  
-                    next_state = stop;                   
+//                    bit = 0;  
+                    state = stop;                   
                 end
             
+            /* stop bit */
             stop: begin
                 for (counter = 0; counter < max_counter; counter = counter + 1) //if counter hasn't overflowed yet, transmit
                               JA[0] = stop_bit;                            
-                next_state = idle;
+                state = idle;
             end
-            
-            default: next_state = idle; //Return to idle if error
-                    
-        endcase
-        
-        /* Next State logic */
-        current_state = next_state;
-    
+                                
+        endcase    
     end
 endmodule
