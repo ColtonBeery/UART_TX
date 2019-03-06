@@ -1,0 +1,29 @@
+Revision 0.14 
+	- Solved error that caused synthesis of Revision 0.13 caused my laptop to BSOD twice. Solved by removing debug declarations from XDC file. Not sure why they cause a proble because they worked for the last several revisions. 
+	- Restored for loop logic because I wasn't getting any output with my if loop logic. Now it at least outputs some incorrect stuff, instead of always asserting 0 when button pushed.	
+ Revision 0.13 
+	- Adding more states to try to solve the problem of no data output. After using LEDs for Debugging in Revision 0.12, it looks like the input data is being read from the switches correctly, because using	 assign IO_LED = data;	 turns on the correct LEDs. But trying to concatenate 	transmission = {stop_bit, data, start_bit};	 and outputting that to the LED's doesn't turn on any LEDs.  
+ Revision 0.12 
+	- Still no data output. Added LEDs for debugging.  
+ Revision 0.11 
+	- 0.10 still wouldn't output anything. I think I tried to get too fancy by setting data size to [number_data_bits-1:0] instead of hardcoding size
+ Revision 0.10 
+	- Fixed logic error on line 120 where I put a 1 when it should be a 0, resulting in the Tx pin always asserting 0 after button pushed
+ Revision 0.09 
+	- Apparently I never incremented counter in revision 0.08. Fixed that. 
+ Revision 0.08 
+	- I think the for loop logic is messing me up. Trying if statements instead. 
+ Revision 0.07 
+	- tried changing all nonblocking statements to blocking statements
+ Revision 0.06 
+	- changed read logic from      if (IO_BTN_C ) begin   to     if (IO_BTN_C && ~transmit ) begin  
+ Revision 0.05 
+	- Removed read state, moved into an if statement 
+ Revision 0.04 
+	- Added baud rate generation 
+ Revision 0.03 
+	- Move transmit logic into for loop
+ Revision 0.02 
+	- First attempts at basic code
+ Revision 0.01 
+	- File Created
