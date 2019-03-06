@@ -4,7 +4,7 @@
 // Engineer: Colton Beery
 // 
 // Create Date: 02/20/2019 08:59:18 AM
-// Revision Date: 3/6/2019 11:41 AM
+// Revision Date: 3/6/2019 12:01 AM
 // Module Name: UART_TX
 // Project Name: UART
 // Target Devices: Basys3
@@ -19,7 +19,7 @@
 // Dependencies: Basys3_Master_Customized.xdc
 // 
 // Revision History 
-// Current Revision: 0.19
+// Current Revision: 0.20
 // Changelog in Changelog.txt
 //
 // Additional Comments:  
@@ -45,7 +45,6 @@ module UART_TX(
     
     /* Data and transmission parameters */
     reg [7:0] data = 0;         //data input    
-//    reg [9:0] transmission; //what to output
     reg [3:0] bit = 0;                           //bit number currently being transmitted 
     
     parameter max_counter = 10415;          // this should give 9600 baud
@@ -73,31 +72,22 @@ module UART_TX(
             
             /* start bit */
             start: begin
-//                for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
-//                    JA[0] <= 0; //start bit 0                        
-//                end
-                if (counter < max_counter) begin //if counter hasn't overflowed yet, transmit start bit
+                if (counter < max_counter) begin //if counter hasn't reached 10415 yet, transmit start bit
                         JA[0] <= 0;
                         counter <= counter + 1; 
-                    end else begin //when counter overflows, done transmitting start bit, go to data
+                    end else begin //when counter reaches 10415, done transmitting start bit, go to data
                         counter <= 0; 
-                        state <= start;
+                        state <= out;
                 end
-                state <= out;
             end
             
             /* Data transmission */
             out: begin
-//                    for (bit = 0; bit <= 7; bit = bit + 1) begin // If there's still more bits to transmit
-//                      for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
-//                            JA[0] <= data[bit]; 
-//                      end
-//                    end
                     if (bit <= 7) begin // If there's still more bits to transmit
-                        if (counter < max_counter) begin //if counter hasn't overflowed yet, transmit
+                        if (counter < max_counter) begin //if counter hasn't reached 10415 yet, transmit
                             JA[0] <= data[bit];
                             counter <= counter + 1; 
-                        end else begin //reset counter when it overflows, and go to next bit
+                        end else begin //reset counter when it reaches 10415, and go to next bit
                             counter <= 0;
                             bit <= bit + 1; 
                         end
@@ -109,14 +99,11 @@ module UART_TX(
                 end
             
             /* stop bit */
-            stop: begin
-//                for (counter = 0; counter <= max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
-//                    JA[0] <= 1;  //stop bit is 1
-//                end    
-                if (counter < max_counter) begin //if counter hasn't overflowed yet, transmit
-                        JA[0] <= 0;
+            stop: begin  
+                if (counter < max_counter) begin //if counter hasn't reached 10415 yet, transmit stop bit
+                        JA[0] <= 1;
                         counter <= counter + 1; 
-                    end else begin //when counter overflows, done transmitting, go back to idle
+                    end else begin //when counter reaches 10415, done transmitting, go back to idle
                         counter <= 0; 
                         state <= idle;
                 end
