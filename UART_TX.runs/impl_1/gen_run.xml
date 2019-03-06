@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1551893675">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1551895050">
   <File Type="BITSTR-BMM" Name="UART_TX_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="UART_TX_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="UART_TX_timing_summary_init.rpt"/>
