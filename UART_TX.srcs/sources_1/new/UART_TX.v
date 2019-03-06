@@ -4,7 +4,7 @@
 // Engineer: Colton Beery
 // 
 // Create Date: 02/20/2019 08:59:18 AM
-// Revision Date: 3/6/2019 11:03 AM
+// Revision Date: 3/6/2019 11:18 AM
 // Module Name: UART_TX
 // Project Name: UART
 // Target Devices: Basys3
@@ -19,7 +19,7 @@
 // Dependencies: Basys3_Master_Customized.xdc
 // 
 // Revision History 
-// Current Revision: 0.17
+// Current Revision: 0.18
 // Changelog in Changelog.txt
 //
 // Additional Comments:  
@@ -37,26 +37,19 @@ module UART_TX(
     );
     
     /* State Machine Parameters */
-    reg [1:0] state; 
+    reg [1:0] state = 0; 
     parameter idle = 2'b00; //State 0 = idle
     parameter start = 2'b01; //State 1 = start bit
     parameter out = 2'b10;  //State 2 = output
     parameter stop = 2'b11; //State 3 = stop bit
     
     /* Data and transmission parameters */
-    parameter idle_bit = 1;                  //idle high
-    parameter start_bit = 0;                 //start bit 0
-    parameter stop_bit = 1;                  //stop bit
-    reg [7:0] data;         //data input    
+    reg [7:0] data = 0;         //data input    
 //    reg [9:0] transmission; //what to output
-    reg [3:0] bit;                           //bit number currently being transmitted 
+    reg [3:0] bit = 0;                           //bit number currently being transmitted 
     
-    /* Baud rate generation parameters */
-//    parameter master_clk_freq = 100000;                 // Master clock frequency 100 MHz
-//    parameter baud_rate = 9600;                         //Baud rate 9600
-//    parameter max_counter = master_clk_freq/baud_rate;  //what the counter needs to go up to for baud rate 9600
     parameter max_counter = 10415;
-    reg [13:0] counter;                                 //counter for baud rate generation; currently hardcoded to 14 bits for 9600 baud
+    reg [13:0] counter = 0;                                 //counter for baud rate generation; currently hardcoded to 14 bits for 9600 baud
     
     /* LED Debugging */
     assign IO_LED = data; //LEDs used to check if data is read successfully
@@ -67,7 +60,7 @@ module UART_TX(
         /* Current State Logic */    
           case(state)
             idle: begin              
-                JA[0] <= idle_bit; //When idle, assert idle bit
+                JA[0] <= 1; //When idle, assert idle bit (1)
                 /* Read Logic */
                 if (IO_BTN_C) begin
                     data <= IO_SWITCH[7:0];     //read switches 1-8, where 0 is LSB
@@ -81,7 +74,7 @@ module UART_TX(
             /* start bit */
             start: begin
                 for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
-                    JA[0] <= start_bit;                        
+                    JA[0] <= 0; //start bit 0                        
                 end
                 state <= out;
             end
@@ -89,8 +82,9 @@ module UART_TX(
             /* Data transmission */
             out: begin
                     for (bit = 0; bit <= 7; bit = bit + 1) begin // If there's still more bits to transmit
-                      for (counter = 0; counter < max_counter; counter = counter + 1) //if counter hasn't overflowed yet, transmit
+                      for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
                             JA[0] <= data[bit]; 
+                      end
                     end
 //                    bit = 0;  
                     state <= stop;                   
@@ -98,8 +92,9 @@ module UART_TX(
             
             /* stop bit */
             stop: begin
-                for (counter = 0; counter <= max_counter; counter = counter + 1) //if counter hasn't overflowed yet, transmit
-                    JA[0] <= stop_bit;                            
+                for (counter = 0; counter <= max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
+                    JA[0] <= 1;  //stop bit is 1
+                end                          
                 state <= idle;
             end                                
         endcase    
