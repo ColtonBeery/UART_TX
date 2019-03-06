@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Wed Mar  6 10:01:39 2019
+| Date         : Wed Mar  6 10:31:22 2019
 | Host         : DellG5Laptop running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file UART_TX_control_sets_placed.rpt
 | Design       : UART_TX
@@ -46,10 +46,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               0 |            0 |
+| No           | No                    | No                     |               1 |            1 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |              13 |            6 |
+| Yes          | No                    | No                     |              12 |            5 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |               0 |            0 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -61,7 +61,7 @@ Table of Contents
 +----------------+----------------------------------+------------------+------------------+----------------+
 |  Clock Signal  |           Enable Signal          | Set/Reset Signal | Slice Load Count | Bel Load Count |
 +----------------+----------------------------------+------------------+------------------+----------------+
-|  clk_IBUF_BUFG | JA[0]_i_1_n_0                    |                  |                1 |              1 |
+|  clk_IBUF_BUFG |                                  |                  |                1 |              1 |
 |  clk_IBUF_BUFG | FSM_onehot_next_state[3]_i_1_n_0 |                  |                1 |              4 |
 |  clk_IBUF_BUFG | data                             |                  |                4 |              8 |
 +----------------+----------------------------------+------------------+------------------+----------------+

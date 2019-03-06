@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Wed Mar  6 10:01:57 2019
+| Date         : Wed Mar  6 10:31:41 2019
 | Host         : DellG5Laptop running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file UART_TX_timing_summary_routed.rpt -pb UART_TX_timing_summary_routed.pb -rpx UART_TX_timing_summary_routed.rpx -warn_on_violation
 | Design       : UART_TX
@@ -126,7 +126,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      7.826        0.000                      0                   18        0.206        0.000                      0                   18        4.500        0.000                       0                    14  
+      7.923        0.000                      0                   17        0.164        0.000                      0                   17        4.500        0.000                       0                    14  
 
 
 All user specified timing constraints are met.
@@ -149,7 +149,7 @@ sys_clk_pin  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-sys_clk_pin         7.826        0.000                      0                   18        0.206        0.000                      0                   18        4.500        0.000                       0                    14  
+sys_clk_pin         7.923        0.000                      0                   17        0.164        0.000                      0                   17        4.500        0.000                       0                    14  
 
 
 ------------------------------------------------------------------------------------------------
@@ -180,15 +180,15 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  sys_clk_pin
   To Clock:  sys_clk_pin
 
-Setup :            0  Failing Endpoints,  Worst Slack        7.826ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.206ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        7.923ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.164ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        4.500ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             7.826ns  (required time - arrival time)
+Slack (MET) :             7.923ns  (required time - arrival time)
   Source:                 FSM_onehot_next_state_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            data_reg[1]/CE
@@ -196,7 +196,7 @@ Slack (MET) :             7.826ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.905ns  (logic 0.580ns (30.449%)  route 1.325ns (69.551%))
+  Data Path Delay:        1.808ns  (logic 0.580ns (32.079%)  route 1.228ns (67.921%))
   Logic Levels:           1  (LUT2=1)
   Clock Path Skew:        -0.029ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.856ns = ( 14.856 - 10.000 ) 
@@ -221,9 +221,9 @@ Slack (MET) :             7.826ns  (required time - arrival time)
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.537     6.152    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.276 r  data[7]_i_1/O
-                         net (fo=8, routed)           0.788     7.064    data
+                         net (fo=4, routed)           0.303     5.918    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.042 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.925     6.967    data
     SLICE_X0Y12          FDRE                                         r  data_reg[1]/CE
   -------------------------------------------------------------------    -------------------
 
@@ -241,182 +241,11 @@ Slack (MET) :             7.826ns  (required time - arrival time)
     SLICE_X0Y12          FDRE (Setup_fdre_C_CE)      -0.205    14.890    data_reg[1]
   -------------------------------------------------------------------
                          required time                         14.890    
-                         arrival time                          -7.064    
+                         arrival time                          -6.967    
   -------------------------------------------------------------------
-                         slack                                  7.826    
+                         slack                                  7.923    
 
-Slack (MET) :             7.970ns  (required time - arrival time)
-  Source:                 FSM_onehot_next_state_reg[0]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            data_reg[2]/CE
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.763ns  (logic 0.580ns (32.902%)  route 1.183ns (67.098%))
-  Logic Levels:           1  (LUT2=1)
-  Clock Path Skew:        -0.027ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.858ns = ( 14.858 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.159ns
-    Clock Pessimism Removal (CPR):    0.274ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          1.638     5.159    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.537     6.152    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.276 r  data[7]_i_1/O
-                         net (fo=8, routed)           0.646     6.922    data
-    SLICE_X0Y10          FDRE                                         r  data_reg[2]/CE
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                     10.000    10.000 r  
-    W5                                                0.000    10.000 r  clk (IN)
-                         net (fo=0)                   0.000    10.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          1.517    14.858    clk_IBUF_BUFG
-    SLICE_X0Y10          FDRE                                         r  data_reg[2]/C
-                         clock pessimism              0.274    15.132    
-                         clock uncertainty           -0.035    15.097    
-    SLICE_X0Y10          FDRE (Setup_fdre_C_CE)      -0.205    14.892    data_reg[2]
-  -------------------------------------------------------------------
-                         required time                         14.892    
-                         arrival time                          -6.922    
-  -------------------------------------------------------------------
-                         slack                                  7.970    
-
-Slack (MET) :             7.970ns  (required time - arrival time)
-  Source:                 FSM_onehot_next_state_reg[0]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            data_reg[3]/CE
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.763ns  (logic 0.580ns (32.902%)  route 1.183ns (67.098%))
-  Logic Levels:           1  (LUT2=1)
-  Clock Path Skew:        -0.027ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.858ns = ( 14.858 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.159ns
-    Clock Pessimism Removal (CPR):    0.274ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          1.638     5.159    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.537     6.152    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.276 r  data[7]_i_1/O
-                         net (fo=8, routed)           0.646     6.922    data
-    SLICE_X0Y10          FDRE                                         r  data_reg[3]/CE
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                     10.000    10.000 r  
-    W5                                                0.000    10.000 r  clk (IN)
-                         net (fo=0)                   0.000    10.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          1.517    14.858    clk_IBUF_BUFG
-    SLICE_X0Y10          FDRE                                         r  data_reg[3]/C
-                         clock pessimism              0.274    15.132    
-                         clock uncertainty           -0.035    15.097    
-    SLICE_X0Y10          FDRE (Setup_fdre_C_CE)      -0.205    14.892    data_reg[3]
-  -------------------------------------------------------------------
-                         required time                         14.892    
-                         arrival time                          -6.922    
-  -------------------------------------------------------------------
-                         slack                                  7.970    
-
-Slack (MET) :             8.108ns  (required time - arrival time)
-  Source:                 FSM_onehot_next_state_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            JA_reg[0]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Setup (Max at Slow Process Corner)
-  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.864ns  (logic 0.580ns (31.122%)  route 1.284ns (68.878%))
-  Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        -0.022ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
-    Source Clock Delay      (SCD):    5.159ns
-    Clock Pessimism Removal (CPR):    0.277ns
-  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter     (TSJ):    0.071ns
-    Total Input Jitter      (TIJ):    0.000ns
-    Discrete Jitter          (DJ):    0.000ns
-    Phase Error              (PE):    0.000ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.967     3.425    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          1.638     5.159    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[2]/Q
-                         net (fo=3, routed)           1.284     6.899    FSM_onehot_next_state_reg_n_0_[2]
-    SLICE_X0Y6           LUT4 (Prop_lut4_I3_O)        0.124     7.023 r  JA[0]_i_2/O
-                         net (fo=1, routed)           0.000     7.023    JA[0]_i_2_n_0
-    SLICE_X0Y6           FDRE                                         r  JA_reg[0]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                     10.000    10.000 r  
-    W5                                                0.000    10.000 r  clk (IN)
-                         net (fo=0)                   0.000    10.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           1.862    13.250    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          1.519    14.860    clk_IBUF_BUFG
-    SLICE_X0Y6           FDRE                                         r  JA_reg[0]/C
-                         clock pessimism              0.277    15.137    
-                         clock uncertainty           -0.035    15.102    
-    SLICE_X0Y6           FDRE (Setup_fdre_C_D)        0.029    15.131    JA_reg[0]
-  -------------------------------------------------------------------
-                         required time                         15.131    
-                         arrival time                          -7.023    
-  -------------------------------------------------------------------
-                         slack                                  8.108    
-
-Slack (MET) :             8.116ns  (required time - arrival time)
+Slack (MET) :             7.964ns  (required time - arrival time)
   Source:                 FSM_onehot_next_state_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            FSM_onehot_next_state_reg[0]/CE
@@ -424,7 +253,7 @@ Slack (MET) :             8.116ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.644ns  (logic 0.580ns (35.290%)  route 1.064ns (64.710%))
+  Data Path Delay:        1.796ns  (logic 0.580ns (32.300%)  route 1.216ns (67.700%))
   Logic Levels:           1  (LUT5=1)
   Clock Path Skew:        0.000ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
@@ -449,9 +278,9 @@ Slack (MET) :             8.116ns  (required time - arrival time)
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.874     6.489    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X0Y6           LUT5 (Prop_lut5_I2_O)        0.124     6.613 r  FSM_onehot_next_state[3]_i_1/O
-                         net (fo=4, routed)           0.190     6.803    FSM_onehot_next_state[3]_i_1_n_0
+                         net (fo=4, routed)           0.837     6.453    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X1Y6           LUT5 (Prop_lut5_I2_O)        0.124     6.577 r  FSM_onehot_next_state[3]_i_1/O
+                         net (fo=4, routed)           0.378     6.955    FSM_onehot_next_state[3]_i_1_n_0
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/CE
   -------------------------------------------------------------------    -------------------
 
@@ -469,11 +298,11 @@ Slack (MET) :             8.116ns  (required time - arrival time)
     SLICE_X1Y6           FDRE (Setup_fdre_C_CE)      -0.205    14.919    FSM_onehot_next_state_reg[0]
   -------------------------------------------------------------------
                          required time                         14.919    
-                         arrival time                          -6.803    
+                         arrival time                          -6.955    
   -------------------------------------------------------------------
-                         slack                                  8.116    
+                         slack                                  7.964    
 
-Slack (MET) :             8.116ns  (required time - arrival time)
+Slack (MET) :             7.964ns  (required time - arrival time)
   Source:                 FSM_onehot_next_state_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            FSM_onehot_next_state_reg[1]/CE
@@ -481,7 +310,7 @@ Slack (MET) :             8.116ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.644ns  (logic 0.580ns (35.290%)  route 1.064ns (64.710%))
+  Data Path Delay:        1.796ns  (logic 0.580ns (32.300%)  route 1.216ns (67.700%))
   Logic Levels:           1  (LUT5=1)
   Clock Path Skew:        0.000ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
@@ -506,9 +335,9 @@ Slack (MET) :             8.116ns  (required time - arrival time)
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.874     6.489    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X0Y6           LUT5 (Prop_lut5_I2_O)        0.124     6.613 r  FSM_onehot_next_state[3]_i_1/O
-                         net (fo=4, routed)           0.190     6.803    FSM_onehot_next_state[3]_i_1_n_0
+                         net (fo=4, routed)           0.837     6.453    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X1Y6           LUT5 (Prop_lut5_I2_O)        0.124     6.577 r  FSM_onehot_next_state[3]_i_1/O
+                         net (fo=4, routed)           0.378     6.955    FSM_onehot_next_state[3]_i_1_n_0
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[1]/CE
   -------------------------------------------------------------------    -------------------
 
@@ -526,11 +355,11 @@ Slack (MET) :             8.116ns  (required time - arrival time)
     SLICE_X1Y6           FDRE (Setup_fdre_C_CE)      -0.205    14.919    FSM_onehot_next_state_reg[1]
   -------------------------------------------------------------------
                          required time                         14.919    
-                         arrival time                          -6.803    
+                         arrival time                          -6.955    
   -------------------------------------------------------------------
-                         slack                                  8.116    
+                         slack                                  7.964    
 
-Slack (MET) :             8.116ns  (required time - arrival time)
+Slack (MET) :             7.964ns  (required time - arrival time)
   Source:                 FSM_onehot_next_state_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            FSM_onehot_next_state_reg[2]/CE
@@ -538,7 +367,7 @@ Slack (MET) :             8.116ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.644ns  (logic 0.580ns (35.290%)  route 1.064ns (64.710%))
+  Data Path Delay:        1.796ns  (logic 0.580ns (32.300%)  route 1.216ns (67.700%))
   Logic Levels:           1  (LUT5=1)
   Clock Path Skew:        0.000ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
@@ -563,9 +392,9 @@ Slack (MET) :             8.116ns  (required time - arrival time)
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.874     6.489    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X0Y6           LUT5 (Prop_lut5_I2_O)        0.124     6.613 r  FSM_onehot_next_state[3]_i_1/O
-                         net (fo=4, routed)           0.190     6.803    FSM_onehot_next_state[3]_i_1_n_0
+                         net (fo=4, routed)           0.837     6.453    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X1Y6           LUT5 (Prop_lut5_I2_O)        0.124     6.577 r  FSM_onehot_next_state[3]_i_1/O
+                         net (fo=4, routed)           0.378     6.955    FSM_onehot_next_state[3]_i_1_n_0
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/CE
   -------------------------------------------------------------------    -------------------
 
@@ -583,11 +412,11 @@ Slack (MET) :             8.116ns  (required time - arrival time)
     SLICE_X1Y6           FDRE (Setup_fdre_C_CE)      -0.205    14.919    FSM_onehot_next_state_reg[2]
   -------------------------------------------------------------------
                          required time                         14.919    
-                         arrival time                          -6.803    
+                         arrival time                          -6.955    
   -------------------------------------------------------------------
-                         slack                                  8.116    
+                         slack                                  7.964    
 
-Slack (MET) :             8.116ns  (required time - arrival time)
+Slack (MET) :             7.964ns  (required time - arrival time)
   Source:                 FSM_onehot_next_state_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            FSM_onehot_next_state_reg[3]/CE
@@ -595,7 +424,7 @@ Slack (MET) :             8.116ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.644ns  (logic 0.580ns (35.290%)  route 1.064ns (64.710%))
+  Data Path Delay:        1.796ns  (logic 0.580ns (32.300%)  route 1.216ns (67.700%))
   Logic Levels:           1  (LUT5=1)
   Clock Path Skew:        0.000ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
@@ -620,9 +449,9 @@ Slack (MET) :             8.116ns  (required time - arrival time)
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.874     6.489    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X0Y6           LUT5 (Prop_lut5_I2_O)        0.124     6.613 r  FSM_onehot_next_state[3]_i_1/O
-                         net (fo=4, routed)           0.190     6.803    FSM_onehot_next_state[3]_i_1_n_0
+                         net (fo=4, routed)           0.837     6.453    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X1Y6           LUT5 (Prop_lut5_I2_O)        0.124     6.577 r  FSM_onehot_next_state[3]_i_1/O
+                         net (fo=4, routed)           0.378     6.955    FSM_onehot_next_state[3]_i_1_n_0
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[3]/CE
   -------------------------------------------------------------------    -------------------
 
@@ -640,19 +469,190 @@ Slack (MET) :             8.116ns  (required time - arrival time)
     SLICE_X1Y6           FDRE (Setup_fdre_C_CE)      -0.205    14.919    FSM_onehot_next_state_reg[3]
   -------------------------------------------------------------------
                          required time                         14.919    
-                         arrival time                          -6.803    
+                         arrival time                          -6.955    
   -------------------------------------------------------------------
-                         slack                                  8.116    
+                         slack                                  7.964    
 
-Slack (MET) :             8.132ns  (required time - arrival time)
+Slack (MET) :             8.067ns  (required time - arrival time)
   Source:                 FSM_onehot_next_state_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            data_reg[6]/CE
+  Destination:            data_reg[2]/CE
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.603ns  (logic 0.580ns (36.185%)  route 1.023ns (63.815%))
+  Data Path Delay:        1.666ns  (logic 0.580ns (34.814%)  route 1.086ns (65.186%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        -0.027ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.858ns = ( 14.858 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          1.638     5.159    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
+                         net (fo=4, routed)           0.303     5.918    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.042 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.783     6.825    data
+    SLICE_X0Y10          FDRE                                         r  data_reg[2]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          1.517    14.858    clk_IBUF_BUFG
+    SLICE_X0Y10          FDRE                                         r  data_reg[2]/C
+                         clock pessimism              0.274    15.132    
+                         clock uncertainty           -0.035    15.097    
+    SLICE_X0Y10          FDRE (Setup_fdre_C_CE)      -0.205    14.892    data_reg[2]
+  -------------------------------------------------------------------
+                         required time                         14.892    
+                         arrival time                          -6.825    
+  -------------------------------------------------------------------
+                         slack                                  8.067    
+
+Slack (MET) :             8.218ns  (required time - arrival time)
+  Source:                 FSM_onehot_next_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            data_reg[3]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        1.514ns  (logic 0.580ns (38.305%)  route 0.934ns (61.695%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        -0.027ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.858ns = ( 14.858 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          1.638     5.159    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
+                         net (fo=4, routed)           0.303     5.918    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.042 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.631     6.673    data
+    SLICE_X0Y9           FDRE                                         r  data_reg[3]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          1.517    14.858    clk_IBUF_BUFG
+    SLICE_X0Y9           FDRE                                         r  data_reg[3]/C
+                         clock pessimism              0.274    15.132    
+                         clock uncertainty           -0.035    15.097    
+    SLICE_X0Y9           FDRE (Setup_fdre_C_CE)      -0.205    14.892    data_reg[3]
+  -------------------------------------------------------------------
+                         required time                         14.892    
+                         arrival time                          -6.673    
+  -------------------------------------------------------------------
+                         slack                                  8.218    
+
+Slack (MET) :             8.218ns  (required time - arrival time)
+  Source:                 FSM_onehot_next_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            data_reg[4]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        1.514ns  (logic 0.580ns (38.305%)  route 0.934ns (61.695%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        -0.027ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.858ns = ( 14.858 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          1.638     5.159    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
+                         net (fo=4, routed)           0.303     5.918    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.042 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.631     6.673    data
+    SLICE_X0Y9           FDRE                                         r  data_reg[4]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          1.517    14.858    clk_IBUF_BUFG
+    SLICE_X0Y9           FDRE                                         r  data_reg[4]/C
+                         clock pessimism              0.274    15.132    
+                         clock uncertainty           -0.035    15.097    
+    SLICE_X0Y9           FDRE (Setup_fdre_C_CE)      -0.205    14.892    data_reg[4]
+  -------------------------------------------------------------------
+                         required time                         14.892    
+                         arrival time                          -6.673    
+  -------------------------------------------------------------------
+                         slack                                  8.218    
+
+Slack (MET) :             8.310ns  (required time - arrival time)
+  Source:                 FSM_onehot_next_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            data_reg[0]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        1.424ns  (logic 0.580ns (40.725%)  route 0.844ns (59.275%))
   Logic Levels:           1  (LUT2=1)
   Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
@@ -677,10 +677,10 @@ Slack (MET) :             8.132ns  (required time - arrival time)
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.537     6.152    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.276 r  data[7]_i_1/O
-                         net (fo=8, routed)           0.486     6.762    data
-    SLICE_X0Y5           FDRE                                         r  data_reg[6]/CE
+                         net (fo=4, routed)           0.303     5.918    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.042 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.541     6.583    data
+    SLICE_X0Y5           FDRE                                         r  data_reg[0]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -691,25 +691,25 @@ Slack (MET) :             8.132ns  (required time - arrival time)
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
                          net (fo=13, routed)          1.519    14.860    clk_IBUF_BUFG
-    SLICE_X0Y5           FDRE                                         r  data_reg[6]/C
+    SLICE_X0Y5           FDRE                                         r  data_reg[0]/C
                          clock pessimism              0.274    15.134    
                          clock uncertainty           -0.035    15.099    
-    SLICE_X0Y5           FDRE (Setup_fdre_C_CE)      -0.205    14.894    data_reg[6]
+    SLICE_X0Y5           FDRE (Setup_fdre_C_CE)      -0.205    14.894    data_reg[0]
   -------------------------------------------------------------------
                          required time                         14.894    
-                         arrival time                          -6.762    
+                         arrival time                          -6.583    
   -------------------------------------------------------------------
-                         slack                                  8.132    
+                         slack                                  8.310    
 
-Slack (MET) :             8.132ns  (required time - arrival time)
+Slack (MET) :             8.310ns  (required time - arrival time)
   Source:                 FSM_onehot_next_state_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            data_reg[7]/CE
+  Destination:            data_reg[5]/CE
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        1.603ns  (logic 0.580ns (36.185%)  route 1.023ns (63.815%))
+  Data Path Delay:        1.424ns  (logic 0.580ns (40.725%)  route 0.844ns (59.275%))
   Logic Levels:           1  (LUT2=1)
   Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
@@ -734,10 +734,10 @@ Slack (MET) :             8.132ns  (required time - arrival time)
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.537     6.152    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.276 r  data[7]_i_1/O
-                         net (fo=8, routed)           0.486     6.762    data
-    SLICE_X0Y5           FDRE                                         r  data_reg[7]/CE
+                         net (fo=4, routed)           0.303     5.918    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.124     6.042 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.541     6.583    data
+    SLICE_X0Y5           FDRE                                         r  data_reg[5]/CE
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -748,15 +748,15 @@ Slack (MET) :             8.132ns  (required time - arrival time)
                          net (fo=1, routed)           1.862    13.250    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
                          net (fo=13, routed)          1.519    14.860    clk_IBUF_BUFG
-    SLICE_X0Y5           FDRE                                         r  data_reg[7]/C
+    SLICE_X0Y5           FDRE                                         r  data_reg[5]/C
                          clock pessimism              0.274    15.134    
                          clock uncertainty           -0.035    15.099    
-    SLICE_X0Y5           FDRE (Setup_fdre_C_CE)      -0.205    14.894    data_reg[7]
+    SLICE_X0Y5           FDRE (Setup_fdre_C_CE)      -0.205    14.894    data_reg[5]
   -------------------------------------------------------------------
                          required time                         14.894    
-                         arrival time                          -6.762    
+                         arrival time                          -6.583    
   -------------------------------------------------------------------
-                         slack                                  8.132    
+                         slack                                  8.310    
 
 
 
@@ -764,116 +764,16 @@ Slack (MET) :             8.132ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.206ns  (arrival time - required time)
-  Source:                 data_reg[0]/C
+Slack (MET) :             0.164ns  (arrival time - required time)
+  Source:                 FSM_onehot_next_state_reg[2]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            JA_reg[0]/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.314ns  (logic 0.186ns (59.225%)  route 0.128ns (40.775%))
+  Data Path Delay:        0.268ns  (logic 0.186ns (69.512%)  route 0.082ns (30.488%))
   Logic Levels:           1  (LUT4=1)
-  Clock Path Skew:        0.017ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.477ns
-    Clock Pessimism Removal (CPR):    0.499ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.594     1.477    clk_IBUF_BUFG
-    SLICE_X0Y7           FDRE                                         r  data_reg[0]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X0Y7           FDRE (Prop_fdre_C_Q)         0.141     1.618 r  data_reg[0]/Q
-                         net (fo=2, routed)           0.128     1.746    IO_LED_OBUF[0]
-    SLICE_X0Y6           LUT4 (Prop_lut4_I2_O)        0.045     1.791 r  JA[0]_i_2/O
-                         net (fo=1, routed)           0.000     1.791    JA[0]_i_2_n_0
-    SLICE_X0Y6           FDRE                                         r  JA_reg[0]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
-    SLICE_X0Y6           FDRE                                         r  JA_reg[0]/C
-                         clock pessimism             -0.499     1.494    
-    SLICE_X0Y6           FDRE (Hold_fdre_C_D)         0.091     1.585    JA_reg[0]
-  -------------------------------------------------------------------
-                         required time                         -1.585    
-                         arrival time                           1.791    
-  -------------------------------------------------------------------
-                         slack                                  0.206    
-
-Slack (MET) :             0.291ns  (arrival time - required time)
-  Source:                 FSM_onehot_next_state_reg[0]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            FSM_onehot_next_state_reg[1]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.357ns  (logic 0.141ns (39.516%)  route 0.216ns (60.484%))
-  Logic Levels:           0  
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[0]/Q
-                         net (fo=5, routed)           0.216     1.835    FSM_onehot_next_state_reg_n_0_[0]
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[1]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X1Y6           FDRE (Hold_fdre_C_D)         0.066     1.544    FSM_onehot_next_state_reg[1]
-  -------------------------------------------------------------------
-                         required time                         -1.544    
-                         arrival time                           1.835    
-  -------------------------------------------------------------------
-                         slack                                  0.291    
-
-Slack (MET) :             0.350ns  (arrival time - required time)
-  Source:                 FSM_onehot_next_state_reg[1]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            JA_reg[0]/CE
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.324ns  (logic 0.186ns (57.456%)  route 0.138ns (42.544%))
-  Logic Levels:           1  (LUT3=1)
   Clock Path Skew:        0.013ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.993ns
     Source Clock Delay      (SCD):    1.478ns
@@ -889,13 +789,13 @@ Slack (MET) :             0.350ns  (arrival time - required time)
                          net (fo=1, routed)           0.631     0.858    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
                          net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[1]/C
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[1]/Q
-                         net (fo=3, routed)           0.082     1.701    FSM_onehot_next_state_reg_n_0_[1]
-    SLICE_X0Y6           LUT3 (Prop_lut3_I2_O)        0.045     1.746 r  JA[0]_i_1/O
-                         net (fo=1, routed)           0.056     1.802    JA[0]_i_1_n_0
-    SLICE_X0Y6           FDRE                                         r  JA_reg[0]/CE
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[2]/Q
+                         net (fo=3, routed)           0.082     1.701    FSM_onehot_next_state_reg_n_0_[2]
+    SLICE_X0Y6           LUT4 (Prop_lut4_I3_O)        0.045     1.746 r  JA[0]_i_1/O
+                         net (fo=1, routed)           0.000     1.746    JA[0]_i_1_n_0
+    SLICE_X0Y6           FDRE                                         r  JA_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -908,218 +808,14 @@ Slack (MET) :             0.350ns  (arrival time - required time)
                          net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
     SLICE_X0Y6           FDRE                                         r  JA_reg[0]/C
                          clock pessimism             -0.502     1.491    
-    SLICE_X0Y6           FDRE (Hold_fdre_C_CE)       -0.039     1.452    JA_reg[0]
+    SLICE_X0Y6           FDRE (Hold_fdre_C_D)         0.091     1.582    JA_reg[0]
   -------------------------------------------------------------------
-                         required time                         -1.452    
-                         arrival time                           1.802    
+                         required time                         -1.582    
+                         arrival time                           1.746    
   -------------------------------------------------------------------
-                         slack                                  0.350    
+                         slack                                  0.164    
 
-Slack (MET) :             0.350ns  (arrival time - required time)
-  Source:                 FSM_onehot_next_state_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            FSM_onehot_next_state_reg[0]/CE
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.311ns  (logic 0.186ns (59.730%)  route 0.125ns (40.270%))
-  Logic Levels:           1  (LUT5=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[2]/Q
-                         net (fo=3, routed)           0.070     1.689    FSM_onehot_next_state_reg_n_0_[2]
-    SLICE_X0Y6           LUT5 (Prop_lut5_I0_O)        0.045     1.734 r  FSM_onehot_next_state[3]_i_1/O
-                         net (fo=4, routed)           0.056     1.790    FSM_onehot_next_state[3]_i_1_n_0
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/CE
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X1Y6           FDRE (Hold_fdre_C_CE)       -0.039     1.439    FSM_onehot_next_state_reg[0]
-  -------------------------------------------------------------------
-                         required time                         -1.439    
-                         arrival time                           1.790    
-  -------------------------------------------------------------------
-                         slack                                  0.350    
-
-Slack (MET) :             0.350ns  (arrival time - required time)
-  Source:                 FSM_onehot_next_state_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            FSM_onehot_next_state_reg[1]/CE
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.311ns  (logic 0.186ns (59.730%)  route 0.125ns (40.270%))
-  Logic Levels:           1  (LUT5=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[2]/Q
-                         net (fo=3, routed)           0.070     1.689    FSM_onehot_next_state_reg_n_0_[2]
-    SLICE_X0Y6           LUT5 (Prop_lut5_I0_O)        0.045     1.734 r  FSM_onehot_next_state[3]_i_1/O
-                         net (fo=4, routed)           0.056     1.790    FSM_onehot_next_state[3]_i_1_n_0
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[1]/CE
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[1]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X1Y6           FDRE (Hold_fdre_C_CE)       -0.039     1.439    FSM_onehot_next_state_reg[1]
-  -------------------------------------------------------------------
-                         required time                         -1.439    
-                         arrival time                           1.790    
-  -------------------------------------------------------------------
-                         slack                                  0.350    
-
-Slack (MET) :             0.350ns  (arrival time - required time)
-  Source:                 FSM_onehot_next_state_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            FSM_onehot_next_state_reg[2]/CE
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.311ns  (logic 0.186ns (59.730%)  route 0.125ns (40.270%))
-  Logic Levels:           1  (LUT5=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[2]/Q
-                         net (fo=3, routed)           0.070     1.689    FSM_onehot_next_state_reg_n_0_[2]
-    SLICE_X0Y6           LUT5 (Prop_lut5_I0_O)        0.045     1.734 r  FSM_onehot_next_state[3]_i_1/O
-                         net (fo=4, routed)           0.056     1.790    FSM_onehot_next_state[3]_i_1_n_0
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/CE
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X1Y6           FDRE (Hold_fdre_C_CE)       -0.039     1.439    FSM_onehot_next_state_reg[2]
-  -------------------------------------------------------------------
-                         required time                         -1.439    
-                         arrival time                           1.790    
-  -------------------------------------------------------------------
-                         slack                                  0.350    
-
-Slack (MET) :             0.350ns  (arrival time - required time)
-  Source:                 FSM_onehot_next_state_reg[2]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            FSM_onehot_next_state_reg[3]/CE
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.311ns  (logic 0.186ns (59.730%)  route 0.125ns (40.270%))
-  Logic Levels:           1  (LUT5=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[2]/Q
-                         net (fo=3, routed)           0.070     1.689    FSM_onehot_next_state_reg_n_0_[2]
-    SLICE_X0Y6           LUT5 (Prop_lut5_I0_O)        0.045     1.734 r  FSM_onehot_next_state[3]_i_1/O
-                         net (fo=4, routed)           0.056     1.790    FSM_onehot_next_state[3]_i_1_n_0
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[3]/CE
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  clk (IN)
-                         net (fo=0)                   0.000     0.000    clk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    clk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
-                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[3]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X1Y6           FDRE (Hold_fdre_C_CE)       -0.039     1.439    FSM_onehot_next_state_reg[3]
-  -------------------------------------------------------------------
-                         required time                         -1.439    
-                         arrival time                           1.790    
-  -------------------------------------------------------------------
-                         slack                                  0.350    
-
-Slack (MET) :             0.420ns  (arrival time - required time)
+Slack (MET) :             0.263ns  (arrival time - required time)
   Source:                 FSM_onehot_next_state_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            FSM_onehot_next_state_reg[0]/D
@@ -1127,7 +823,7 @@ Slack (MET) :             0.420ns  (arrival time - required time)
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.490ns  (logic 0.141ns (28.769%)  route 0.349ns (71.231%))
+  Data Path Delay:        0.333ns  (logic 0.141ns (42.290%)  route 0.192ns (57.710%))
   Logic Levels:           0  
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.993ns
@@ -1147,7 +843,7 @@ Slack (MET) :             0.420ns  (arrival time - required time)
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[3]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[3]/Q
-                         net (fo=4, routed)           0.349     1.968    FSM_onehot_next_state_reg_n_0_[3]
+                         net (fo=3, routed)           0.192     1.812    FSM_onehot_next_state_reg_n_0_[3]
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
@@ -1164,19 +860,19 @@ Slack (MET) :             0.420ns  (arrival time - required time)
     SLICE_X1Y6           FDRE (Hold_fdre_C_D)         0.070     1.548    FSM_onehot_next_state_reg[0]
   -------------------------------------------------------------------
                          required time                         -1.548    
-                         arrival time                           1.968    
+                         arrival time                           1.812    
   -------------------------------------------------------------------
-                         slack                                  0.420    
+                         slack                                  0.263    
 
-Slack (MET) :             0.459ns  (arrival time - required time)
-  Source:                 FSM_onehot_next_state_reg[2]/C
+Slack (MET) :             0.277ns  (arrival time - required time)
+  Source:                 FSM_onehot_next_state_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            FSM_onehot_next_state_reg[3]/D
+  Destination:            FSM_onehot_next_state_reg[1]/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.531ns  (logic 0.141ns (26.532%)  route 0.390ns (73.468%))
+  Data Path Delay:        0.343ns  (logic 0.141ns (41.166%)  route 0.202ns (58.834%))
   Logic Levels:           0  
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.993ns
@@ -1193,11 +889,11 @@ Slack (MET) :             0.459ns  (arrival time - required time)
                          net (fo=1, routed)           0.631     0.858    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
                          net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/C
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[2]/Q
-                         net (fo=3, routed)           0.390     2.010    FSM_onehot_next_state_reg_n_0_[2]
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[3]/D
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[0]/Q
+                         net (fo=4, routed)           0.202     1.821    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1208,16 +904,16 @@ Slack (MET) :             0.459ns  (arrival time - required time)
                          net (fo=1, routed)           0.685     1.099    clk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
                          net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
-    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[3]/C
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[1]/C
                          clock pessimism             -0.515     1.478    
-    SLICE_X1Y6           FDRE (Hold_fdre_C_D)         0.072     1.550    FSM_onehot_next_state_reg[3]
+    SLICE_X1Y6           FDRE (Hold_fdre_C_D)         0.066     1.544    FSM_onehot_next_state_reg[1]
   -------------------------------------------------------------------
-                         required time                         -1.550    
-                         arrival time                           2.010    
+                         required time                         -1.544    
+                         arrival time                           1.821    
   -------------------------------------------------------------------
-                         slack                                  0.459    
+                         slack                                  0.277    
 
-Slack (MET) :             0.463ns  (arrival time - required time)
+Slack (MET) :             0.282ns  (arrival time - required time)
   Source:                 FSM_onehot_next_state_reg[1]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            FSM_onehot_next_state_reg[2]/D
@@ -1225,7 +921,7 @@ Slack (MET) :             0.463ns  (arrival time - required time)
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.533ns  (logic 0.141ns (26.429%)  route 0.392ns (73.571%))
+  Data Path Delay:        0.352ns  (logic 0.141ns (40.043%)  route 0.211ns (59.957%))
   Logic Levels:           0  
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.993ns
@@ -1245,7 +941,7 @@ Slack (MET) :             0.463ns  (arrival time - required time)
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[1]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[1]/Q
-                         net (fo=3, routed)           0.392     2.012    FSM_onehot_next_state_reg_n_0_[1]
+                         net (fo=2, routed)           0.211     1.830    FSM_onehot_next_state_reg_n_0_[1]
     SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
@@ -1262,9 +958,313 @@ Slack (MET) :             0.463ns  (arrival time - required time)
     SLICE_X1Y6           FDRE (Hold_fdre_C_D)         0.070     1.548    FSM_onehot_next_state_reg[2]
   -------------------------------------------------------------------
                          required time                         -1.548    
-                         arrival time                           2.012    
+                         arrival time                           1.830    
   -------------------------------------------------------------------
-                         slack                                  0.463    
+                         slack                                  0.282    
+
+Slack (MET) :             0.461ns  (arrival time - required time)
+  Source:                 FSM_onehot_next_state_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            FSM_onehot_next_state_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.533ns  (logic 0.141ns (26.440%)  route 0.392ns (73.561%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.993ns
+    Source Clock Delay      (SCD):    1.478ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[2]/Q
+                         net (fo=3, routed)           0.392     2.011    FSM_onehot_next_state_reg_n_0_[2]
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[3]/C
+                         clock pessimism             -0.515     1.478    
+    SLICE_X1Y6           FDRE (Hold_fdre_C_D)         0.072     1.550    FSM_onehot_next_state_reg[3]
+  -------------------------------------------------------------------
+                         required time                         -1.550    
+                         arrival time                           2.011    
+  -------------------------------------------------------------------
+                         slack                                  0.461    
+
+Slack (MET) :             0.515ns  (arrival time - required time)
+  Source:                 FSM_onehot_next_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            data_reg[0]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.492ns  (logic 0.186ns (37.791%)  route 0.306ns (62.209%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.993ns
+    Source Clock Delay      (SCD):    1.478ns
+    Clock Pessimism Removal (CPR):    0.499ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[0]/Q
+                         net (fo=4, routed)           0.121     1.740    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.045     1.785 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.185     1.970    data
+    SLICE_X0Y5           FDRE                                         r  data_reg[0]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
+    SLICE_X0Y5           FDRE                                         r  data_reg[0]/C
+                         clock pessimism             -0.499     1.494    
+    SLICE_X0Y5           FDRE (Hold_fdre_C_CE)       -0.039     1.455    data_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -1.455    
+                         arrival time                           1.970    
+  -------------------------------------------------------------------
+                         slack                                  0.515    
+
+Slack (MET) :             0.515ns  (arrival time - required time)
+  Source:                 FSM_onehot_next_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            data_reg[5]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.492ns  (logic 0.186ns (37.791%)  route 0.306ns (62.209%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.993ns
+    Source Clock Delay      (SCD):    1.478ns
+    Clock Pessimism Removal (CPR):    0.499ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[0]/Q
+                         net (fo=4, routed)           0.121     1.740    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.045     1.785 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.185     1.970    data
+    SLICE_X0Y5           FDRE                                         r  data_reg[5]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
+    SLICE_X0Y5           FDRE                                         r  data_reg[5]/C
+                         clock pessimism             -0.499     1.494    
+    SLICE_X0Y5           FDRE (Hold_fdre_C_CE)       -0.039     1.455    data_reg[5]
+  -------------------------------------------------------------------
+                         required time                         -1.455    
+                         arrival time                           1.970    
+  -------------------------------------------------------------------
+                         slack                                  0.515    
+
+Slack (MET) :             0.515ns  (arrival time - required time)
+  Source:                 FSM_onehot_next_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            data_reg[6]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.492ns  (logic 0.186ns (37.791%)  route 0.306ns (62.209%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.993ns
+    Source Clock Delay      (SCD):    1.478ns
+    Clock Pessimism Removal (CPR):    0.499ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[0]/Q
+                         net (fo=4, routed)           0.121     1.740    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.045     1.785 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.185     1.970    data
+    SLICE_X0Y5           FDRE                                         r  data_reg[6]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
+    SLICE_X0Y5           FDRE                                         r  data_reg[6]/C
+                         clock pessimism             -0.499     1.494    
+    SLICE_X0Y5           FDRE (Hold_fdre_C_CE)       -0.039     1.455    data_reg[6]
+  -------------------------------------------------------------------
+                         required time                         -1.455    
+                         arrival time                           1.970    
+  -------------------------------------------------------------------
+                         slack                                  0.515    
+
+Slack (MET) :             0.515ns  (arrival time - required time)
+  Source:                 FSM_onehot_next_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            data_reg[7]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.492ns  (logic 0.186ns (37.791%)  route 0.306ns (62.209%))
+  Logic Levels:           1  (LUT2=1)
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.993ns
+    Source Clock Delay      (SCD):    1.478ns
+    Clock Pessimism Removal (CPR):    0.499ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[0]/Q
+                         net (fo=4, routed)           0.121     1.740    FSM_onehot_next_state_reg_n_0_[0]
+    SLICE_X0Y6           LUT2 (Prop_lut2_I0_O)        0.045     1.785 r  data[7]_i_1/O
+                         net (fo=8, routed)           0.185     1.970    data
+    SLICE_X0Y5           FDRE                                         r  data_reg[7]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
+    SLICE_X0Y5           FDRE                                         r  data_reg[7]/C
+                         clock pessimism             -0.499     1.494    
+    SLICE_X0Y5           FDRE (Hold_fdre_C_CE)       -0.039     1.455    data_reg[7]
+  -------------------------------------------------------------------
+                         required time                         -1.455    
+                         arrival time                           1.970    
+  -------------------------------------------------------------------
+                         slack                                  0.515    
+
+Slack (MET) :             0.552ns  (arrival time - required time)
+  Source:                 FSM_onehot_next_state_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            FSM_onehot_next_state_reg[0]/CE
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.513ns  (logic 0.186ns (36.290%)  route 0.327ns (63.710%))
+  Logic Levels:           1  (LUT5=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.993ns
+    Source Clock Delay      (SCD):    1.478ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.595     1.478    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y6           FDRE (Prop_fdre_C_Q)         0.141     1.619 r  FSM_onehot_next_state_reg[3]/Q
+                         net (fo=3, routed)           0.211     1.830    FSM_onehot_next_state_reg_n_0_[3]
+    SLICE_X1Y6           LUT5 (Prop_lut5_I1_O)        0.045     1.875 r  FSM_onehot_next_state[3]_i_1/O
+                         net (fo=4, routed)           0.115     1.991    FSM_onehot_next_state[3]_i_1_n_0
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=13, routed)          0.866     1.993    clk_IBUF_BUFG
+    SLICE_X1Y6           FDRE                                         r  FSM_onehot_next_state_reg[0]/C
+                         clock pessimism             -0.515     1.478    
+    SLICE_X1Y6           FDRE (Hold_fdre_C_CE)       -0.039     1.439    FSM_onehot_next_state_reg[0]
+  -------------------------------------------------------------------
+                         required time                         -1.439    
+                         arrival time                           1.991    
+  -------------------------------------------------------------------
+                         slack                                  0.552    
 
 
 
@@ -1284,30 +1284,30 @@ Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.00
 Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X1Y6     FSM_onehot_next_state_reg[2]/C
 Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X1Y6     FSM_onehot_next_state_reg[3]/C
 Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X0Y6     JA_reg[0]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X0Y7     data_reg[0]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X0Y5     data_reg[0]/C
 Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X0Y12    data_reg[1]/C
 Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X0Y10    data_reg[2]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X0Y10    data_reg[3]/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y7     data_reg[0]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X0Y9     data_reg[3]/C
 Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y12    data_reg[1]/C
 Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y10    data_reg[2]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y10    data_reg[3]/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y7     data_reg[4]/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y7     data_reg[5]/C
 Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[0]/C
 Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[1]/C
 Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[2]/C
 Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[3]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y6     JA_reg[0]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y5     data_reg[0]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y12    data_reg[1]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y10    data_reg[2]/C
 High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[0]/C
 High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[1]/C
 High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[2]/C
 High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[3]/C
 High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y6     JA_reg[0]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y5     data_reg[0]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y5     data_reg[5]/C
 High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y5     data_reg[6]/C
 High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y5     data_reg[7]/C
 High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[0]/C
-High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[1]/C
-High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X1Y6     FSM_onehot_next_state_reg[2]/C
 
 
 

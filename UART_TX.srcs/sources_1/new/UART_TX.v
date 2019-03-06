@@ -4,7 +4,7 @@
 // Engineer: Colton Beery
 // 
 // Create Date: 02/20/2019 08:59:18 AM
-// Revision Date: 3/6/2019 9:47 AM
+// Revision Date: 3/6/2019 10:21 AM
 // Module Name: UART_TX
 // Project Name: UART
 // Target Devices: Basys3
@@ -19,7 +19,7 @@
 // Dependencies: Basys3_Master_Customized.xdc
 // 
 // Revision History 
-// Current Revision: 0.14
+// Current Revision: 0.15
 // Changelog in Changelog.txt
 //
 // Additional Comments:  
@@ -86,7 +86,7 @@ module UART_TX(
             end
             
             out: begin
-                    for (bit = 0; counter < 7; bit = bit + 1) begin // If there's still more bits to transmit
+                    for (bit = 0; bit < 7; bit = bit + 1) begin // If there's still more bits to transmit
                       for (counter = 0; counter < max_counter; counter = counter + 1) //if counter hasn't overflowed yet, transmit
                             JA[0] = data[bit]; 
                     end
