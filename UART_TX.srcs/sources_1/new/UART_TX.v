@@ -4,7 +4,7 @@
 // Engineer: Colton Beery
 // 
 // Create Date: 02/20/2019 08:59:18 AM
-// Revision Date: 3/6/2019 11:18 AM
+// Revision Date: 3/6/2019 11:41 AM
 // Module Name: UART_TX
 // Project Name: UART
 // Target Devices: Basys3
@@ -19,7 +19,7 @@
 // Dependencies: Basys3_Master_Customized.xdc
 // 
 // Revision History 
-// Current Revision: 0.18
+// Current Revision: 0.19
 // Changelog in Changelog.txt
 //
 // Additional Comments:  
@@ -48,8 +48,8 @@ module UART_TX(
 //    reg [9:0] transmission; //what to output
     reg [3:0] bit = 0;                           //bit number currently being transmitted 
     
-    parameter max_counter = 10415;
-    reg [13:0] counter = 0;                                 //counter for baud rate generation; currently hardcoded to 14 bits for 9600 baud
+    parameter max_counter = 10415;          // this should give 9600 baud
+    reg [13:0] counter = 0;                 //counter for baud rate generation; currently hardcoded to 14 bits for 9600 baud
     
     /* LED Debugging */
     assign IO_LED = data; //LEDs used to check if data is read successfully
@@ -67,35 +67,59 @@ module UART_TX(
 //                    transmission = {stop_bit, data, start_bit}; //transmission is Start->data (lsb first)->Stop
                     //IO_LED = transmission;
                     state <= start;
-//                    bit = 0;
+                    bit = 0;
                 end                 
             end
             
             /* start bit */
             start: begin
-                for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
-                    JA[0] <= 0; //start bit 0                        
+//                for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
+//                    JA[0] <= 0; //start bit 0                        
+//                end
+                if (counter < max_counter) begin //if counter hasn't overflowed yet, transmit start bit
+                        JA[0] <= 0;
+                        counter <= counter + 1; 
+                    end else begin //when counter overflows, done transmitting start bit, go to data
+                        counter <= 0; 
+                        state <= start;
                 end
                 state <= out;
             end
             
             /* Data transmission */
             out: begin
-                    for (bit = 0; bit <= 7; bit = bit + 1) begin // If there's still more bits to transmit
-                      for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
-                            JA[0] <= data[bit]; 
-                      end
-                    end
-//                    bit = 0;  
-                    state <= stop;                   
+//                    for (bit = 0; bit <= 7; bit = bit + 1) begin // If there's still more bits to transmit
+//                      for (counter = 0; counter < max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
+//                            JA[0] <= data[bit]; 
+//                      end
+//                    end
+                    if (bit <= 7) begin // If there's still more bits to transmit
+                        if (counter < max_counter) begin //if counter hasn't overflowed yet, transmit
+                            JA[0] <= data[bit];
+                            counter <= counter + 1; 
+                        end else begin //reset counter when it overflows, and go to next bit
+                            counter <= 0;
+                            bit <= bit + 1; 
+                        end
+                    end else begin //when you run out of bits to transmit, reset counter and bit
+                        counter <= 0;
+                        bit <= 0;  
+                        state <= stop;
+                    end                   
                 end
             
             /* stop bit */
             stop: begin
-                for (counter = 0; counter <= max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
-                    JA[0] <= 1;  //stop bit is 1
-                end                          
-                state <= idle;
+//                for (counter = 0; counter <= max_counter; counter = counter + 1) begin //if counter hasn't overflowed yet, transmit
+//                    JA[0] <= 1;  //stop bit is 1
+//                end    
+                if (counter < max_counter) begin //if counter hasn't overflowed yet, transmit
+                        JA[0] <= 0;
+                        counter <= counter + 1; 
+                    end else begin //when counter overflows, done transmitting, go back to idle
+                        counter <= 0; 
+                        state <= idle;
+                end
             end                                
         endcase    
     end
