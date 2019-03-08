@@ -1,7 +1,7 @@
 # COMPE470L UART Lab
 
 <details>
-	<summary>The Instructions </summary>
+	<summary> The Instructions </summary>
 
 
 [Professor Ken Arnold's instruction video](https://drive.google.com/file/d/1Q-ztf6lWboTvkhMa8we5UHa06pon7dVH/view)
@@ -28,7 +28,7 @@ Ultimately, you will be implementing the core subset of transmit/receive functio
 <details>
 	<summary> The Logic (To-Do) </summary>
 
-	![My Original Logic](https://tinyurl.com/y3v7dxfc "My Original Logic")
+![My Original Logic](https://tinyurl.com/y3v7dxfc "My Original Logic")
 
   This was my first attempt at figuring out the state machine logic for the transmitter. It had to be revised a bit as issues came up.
 
@@ -37,7 +37,7 @@ Ultimately, you will be implementing the core subset of transmit/receive functio
 </details>
 
 <details>
-	<summary>The Lab Report </summary>
+	<summary> The Lab Report </summary>
 
 
 <details>
