@@ -13,12 +13,12 @@ This assignment is to create two state machine designs in Verilog and demonstrat
 2. Rx: The tough one, receiving a byte in the format above and displaying it using the LEDs. Your Rx will have to detect the start bit, with 1/2 bit period to confirm a valid start bit, then sample in the middle of each bit interval shifting each bit into an 8 bit register that drives the 8 LEDs on the IO board.
 
 <details>
-	<summary>**Part 1 - Transmit**</summary>
+	<summary> **Part 1 - Transmit** </summary>
 For this specific assignment, in part 1 you must implement a UART that takes paralllel input data from the switches and buttons, and produces a serial output on one of the FPGA output pins.  In order to do that, you must also create a clock with an appropriate frequency to operate the UART from the on-board oscillator connected to the FPGA.  The clock frequency should be higher than the data rate to allow for the requirements for part 2 below, most UARTs use a clock that is 16x the data rate. Capture the serial output data on the scope or logic analyzer abd confirm the serial output data is correct and that the bit period is 1/9600th second long.
 	</details>
 
 <details>
-	<summary>Part 2 - Receive</summary>
+	<summary> Part 2 - Receive </summary>
 In part 2, you will design a serial to parallel receiver that will receive the asynchronous data from your transmitter in part 1 above, and convert it into an 8 bit parallel word for display on the LEDs on the I/O board.
 	</details>
 
@@ -26,13 +26,12 @@ Ultimately, you will be implementing the core subset of transmit/receive functio
 </details>
 
 <details>
-	<summary> The Logic (To-Do) </summary>
+	<summary> The Logic </summary>
 
-![My Original Logic](https://uc1abf78fe64f9ebb980517a3fc7.dl.dropboxusercontent.com/cd/0/get/Acrqs4rf_yU2oDbzewRzjOw8QDTLzinJJJFHfRd5kJGqK--muFy2zPbOb6foDuQ6Ybvxel0HFq_REhbRP-uVDO__RxaKPtF7ZKm2ksaJJq6o45rylfwBIOM9ktfW6IwavFE/file "My Original Logic")
+![The Basic Logic](https://github.com/gameguy95/UART_TX/raw/master/docs/UART%20Tx%20Logic%20Simplified.png "The Basic Logic")
 
-  This was my first attempt at figuring out the state machine logic for the transmitter. It had to be revised a bit as issues came up.
-
-	Remember to go back and add the final version of this later.
+This is a basic flowchart of the logic I used in the design. If you want to understand the full picture, look at the code, or at the picture `UART_TX/docs/UART Tx Logic.png`
+      
 
 </details>
 
