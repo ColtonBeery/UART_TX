@@ -28,7 +28,7 @@ Ultimately, you will be implementing the core subset of transmit/receive functio
 <details>
 	<summary> The Logic (To-Do) </summary>
 
-	![My Original Logic](https://ucbf4d4027535b4464181403a23b.previews.dropboxusercontent.com/p/thumb/AAWGPkRS5FS_OXGXEWxkuXg3gUOQlyR0IOyNe2Ypn5Qjz0ggrog0Q57TNXw68o-kI_lndd3QM_Aeovny6a7TB3cL23puPAO2UtB3PJ3sn_dmODaJXrNR4zK0oVMKUev5QzzPwfGLMVDZ_4gBaHP1aE3C-yuhHdWuQQMtnz5I3ECEcGoodBmOgIourXdMKNJZomOpm12KpyFRMMAlPPVy1vQ9TDdy8iddGJRYwu4RT1o9k8bZztH1bgym-VQjg0D5RrdwcUGmzuVzmsd_QNxlS-tZ/p.png?size_mode=5 "My Original Logic")
+	![My Original Logic](https://uc1abf78fe64f9ebb980517a3fc7.dl.dropboxusercontent.com/cd/0/get/Acrqs4rf_yU2oDbzewRzjOw8QDTLzinJJJFHfRd5kJGqK--muFy2zPbOb6foDuQ6Ybvxel0HFq_REhbRP-uVDO__RxaKPtF7ZKm2ksaJJq6o45rylfwBIOM9ktfW6IwavFE/file?_download_id=6721779728052737635490905859036659654075933702716381400345204966&_notify_domain=www.dropbox.com&dl=1 "My Original Logic")
 
   This was my first attempt at figuring out the state machine logic for the transmitter. It had to be revised a bit as issues came up.
 
