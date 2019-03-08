@@ -93,6 +93,8 @@
 #########
 !*.zip
 #########
-#Project Reports
+#Project Documentation
 #########
 !*.pdf
+!*.jpg
+!*.png
